@@ -6,9 +6,17 @@ const app = Vue.createApp({
         };
     },
     methods: {
+        getRandowmValue(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        },
         attackMonster() {
-            const attackValue = Math.floor(Math.random() * (12 - 5)) + 5;
+            const attackValue = this.getRandowmValue(5, 12);
             this.monsterHealth -= attackValue;
+            this.attackPlayer();
+        },
+        attackPlayer() {
+            const attackValue = this.getRandowmValue(8, 15);
+            this.playerHealth -= attackValue;
         },
     },
 });
